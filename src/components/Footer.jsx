@@ -3,7 +3,7 @@ import { FaInstagram, FaTwitter, FaLinkedin, FaHome, FaCog, FaEnvelope, FaNewspa
 
 export default function Footer() {
     return (
-        <footer className="bg-gradient-to-b from-yellow-400 to-yellow-500 text-black px-6 md:px-12 py-8 rounded-2xl shadow-xl font-sans mt-12 mx-auto max-w-screen-xl">
+        <footer className="bg-gradient-to-b from-yellow-400 to-yellow-500 text-black px-6 md:px-12 py-8 rounded-2xl shadow-xl font-sans mt-12 mx-auto max-w-screen">
 
             {/* CONTACT US Banner */}
             <div className="w-full h-12 bg-black text-white px-4 py-2 inline-flex items-center gap-2 rounded-md font-semibold tracking-wide text-sm">
@@ -12,7 +12,7 @@ export default function Footer() {
             </div>
 
             {/* Main Grid */}
-            <div className="mt-8 grid md:grid-cols-3 gap-5 p-200px items-start justify-center">
+            <div className="mt-8 grid md:grid-cols-[2fr_1fr_1.5fr] gap-5 p-200px items-start justify-center">
                 {/* Left Side */}
                 <div className="flex flex-col justify-evenly items-center ">
                     <h2 className="text-[4rem] leading-none font-extrabold tracking-tight mb-4">GET IN TOUCH.</h2>
