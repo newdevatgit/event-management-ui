@@ -8,10 +8,10 @@ export default function Navbar() {
                 </Link>
             </div>
             <ul className="hidden md:flex space-x-8 text-md font-medium text-black">
-                <li><Link to="/" className="hover:text-green-600">Home</Link></li>
-                <li><Link to="/categories" className="hover:text-green-600">Categories</Link></li>
-                <li><Link to="/services" className="hover:text-green-600">Services</Link></li>
-                <li><Link to="/contact" className="hover:text-green-600">Contact</Link></li>
+                <li><Link to="/" className="hover:text-yellow-500">Home</Link></li>
+                <li><Link to="/categories" className="hover:text-yellow-400">Categories</Link></li>
+                <li><Link to="/services" className="hover:text-yellow-400">Services</Link></li>
+                <li><Link to="/contact" className="hover:text-yellow-400">Contact</Link></li>
             </ul>
             <div className="space-x-3 hidden md:flex">
                 <Link to="/sign-in" className="border border-black text-black px-4 py-2 rounded-full font-medium hover:bg-gray-100">
