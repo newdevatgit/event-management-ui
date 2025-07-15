@@ -11,7 +11,7 @@ export default function Slider() {
     "https://floweraura-blog-img.s3.ap-south-1.amazonaws.com/Celebrate+Anniversary+travel/cvr.jpg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZg9yKSUy0oKJsxJZblexdfoMYhwUAtY2yA&s",
     "https://5.imimg.com/data5/SELLER/Default/2022/8/QF/JF/PJ/2713142/retirement-party-decoration-service.JPG",
-    "https://thumbs.dreamstime.com/b/women-toasting-juices-baby-shower-party-group-friends-having-109381839.jpg",
+    "https://www.parents.com/thmb/JlKRSVpphFei1B17UE35pVnV5Fg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/shutterstock_762391612-41aca833e9184016833a754be5e7d5c3.jpg",
   ];
 
   return (
