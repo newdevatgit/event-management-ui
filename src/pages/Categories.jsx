@@ -48,23 +48,32 @@ export default function Categories() {
   ];
 
   return (
-    <section className="max-w-screen-xl mx-auto px-6 py-12 text-center">
+    <section className="max-w-screen-xl mx-auto px-6 py-16 font-sans">
       {/* Heading
-      <h2 className="text-4xl font-bold mb-4">Categories</h2>
-      <hr className="border-t-2 border-gray-200 w-24 mx-auto mb-10" /> */}
+      <div className="text-center mb-10">
+        <h2 className="text-xl sm:text-2xl text-blue-600 font-semibold underline underline-offset-4">
+          Event Categories
+        </h2>
+        <p className="text-3xl font-bold text-gray-800 mt-2">Our Services</p>
+      </div> */}
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((category, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center space-y-4"
+            className="bg-white border hover:border-purple-600 rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer group"
           >
-            <div className="text-black">{category.icon}</div>
-            <h3 className="text-blue-600 text-lg font-bold">
+            <div className="flex items-center justify-center mb-4 text-purple-600 group-hover:scale-110 transition-transform">
+              {category.icon}
+            </div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-purple-600">
               {category.title}
             </h3>
-            <p className="text-sm text-gray-700 max-w-xs">{category.description}</p>
+            <p className="text-sm text-gray-600">{category.description}</p>
+            <div className="mt-4 text-purple-500 text-sm flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
           </div>
         ))}
       </div>

@@ -1,5 +1,12 @@
+import Slider from "../components/Slider";
+import Categories from "./Categories";
+
+
 export default function Home() {
     return(
-        <h1>Home Page</h1>
+       <>
+        <Slider/>
+        <Categories />
+       </> 
     );
 }

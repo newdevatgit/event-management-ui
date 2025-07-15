@@ -1,85 +1,79 @@
-import { BiCategory } from "react-icons/bi";
-import { FaInstagram, FaTwitter, FaLinkedin, FaHome, FaCog, FaEnvelope, FaNewspaper } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
 
 export default function Footer() {
-    return (
-        <footer className="bg-gradient-to-b from-yellow-400 to-yellow-500 text-black px-6 md:px-12 py-8 rounded-2xl shadow-xl font-sans mt-12 mx-auto max-w-screen">
+  return (
+    <footer className="bg-black text-white pt-16 px-6 md:px-12 font-sans rounded-lg">
 
-            {/* CONTACT US Banner */}
-            <div className="w-full h-12 bg-black text-white px-4 py-2 inline-flex items-center gap-2 rounded-md font-semibold tracking-wide text-sm">
-                <span>CONTACT US</span>
-                <i className="text-yellow-400"><FaEnvelope /></i>
-            </div>
+      {/* Newsletter Box */}
+      <div className="bg-purple-400 rounded-2xl p-8 max-w-5xl mx-auto text-center shadow-lg">
+        
 
-            {/* Main Grid */}
-            <div className="mt-8 grid md:grid-cols-[2fr_1fr_1.5fr] gap-5 p-200px items-start justify-center">
-                {/* Left Side */}
-                <div className="flex flex-col justify-evenly items-center ">
-                    <h2 className="text-[4rem] leading-none font-extrabold tracking-tight mb-4">GET IN TOUCH.</h2>
-                    <div className="border-t border-black mb-4 w-3/4"></div>
-                    <p className="text-sm max-w-md">
-                        We handle every detail so you can focus on the moments that matter most.
-                        Planning made easy, memories made forever.
-                    </p>
+        {/* Email Input */}
+        <div className="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="rounded-full px-4 py-2 text-black w-full sm:w-auto flex-1"
+          />
+          <button className="bg-black text-white rounded-full px-6 py-2 font-semibold hover:bg-gray-900 transition">
+            Get started
+          </button>
+        </div>
+      </div>
 
-                    {/* Social Icons */}
-                    <div className="flex space-x-4 mt-6 text-xl">
-                        <a href="#"><FaInstagram /></a>
-                        <a href="#"><FaTwitter /></a>
-                        <a href="#"><FaLinkedin /></a>
-                    </div>
-                </div>
+      {/* Footer Links */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-16 text-sm text-white">
+        <div>
+          <h4 className="font-bold mb-3">Sign up for our newsletter</h4>
+          <p className="text-white/70 mb-4">
+            Don’t worry, we reserve our newsletter for important news so we only send a few updates a year.
+          </p>
+          <button className="border border-white rounded-full px-4 py-1 hover:bg-white hover:text-black transition">
+            Subscribe
+          </button>
+        </div>
 
-                {/* 2nd column — Centered Quick Links */}
-                <div className="text-sm font-bold flex flex-col space-y-3 p-10">
-                  
-                    <p className="flex items-center gap-2 hover:underline cursor-pointer"><FaHome /> Home</p>
-                    <p className="flex items-center gap-2 hover:underline cursor-pointer"><BiCategory /> Categories</p>
-                    <p className="flex items-center gap-2 hover:underline cursor-pointer"><FaCog /> Services</p>
-                    <p className="flex items-center gap-2 hover:underline cursor-pointer"><FaEnvelope /> Contact</p>
-                    <p className="flex items-center gap-2 hover:underline cursor-pointer"><FaNewspaper /> Blog</p>
-                </div>
+        <div>
+          <h4 className="font-bold mb-3">Quick Links</h4>
+          <ul className="space-y-2 text-white/70">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Services</a></li>
+          </ul>
+        </div>
 
-                {/* 3rd column — Two-column Contact Details in rows */}
-                <div className="text-sm font-bold flex flex-col gap-3 p-10 pl-0">
-                    
+        <div>
+          <h4 className="font-bold mb-3">Company</h4>
+          <ul className="space-y-2 text-white/70">
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
 
-                    <div className="flex justify-between gap-2">
-                        <p className="text-black/80">BASED IN</p>
-                        <p className="text-right">UJJAIN MP, INDIA</p>
-                    </div>
+        <div>
+          <h4 className="font-bold mb-3">Stay Connected</h4>
+          <ul className="space-y-2 text-white/70">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Git Hub</a></li>
+          </ul>
+        </div>
+      </div>
 
-                    <div className="flex justify-between gap-2">
-                        <p className="text-black/80">PHONE NO.</p>
-                        <p className="text-right">+91 7878 ******</p>
-                    </div>
-
-                    <div className="flex justify-between gap-2">
-                        <p className="text-black/80">CONTACT</p>
-                        <p className="text-right">CONTACT@EVENTIQUE.COM</p>
-                    </div>
-
-                    <div className="flex justify-between gap-2">
-                        <p className="text-black/80">SUPPORT</p>
-                        <p className="text-right">HELP@EVENTIQUE.COM</p>
-                    </div>
-
-                    <div className="flex justify-between gap-2">
-                        <p className="text-black/80">STATUS</p>
-                        <p className="text-right">STATUS PAGE</p>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-            {/* Bottom Line */}
-            <div className="border-t border-black mt-10 pt-4 flex justify-between text-xs font-bold uppercase tracking-wider">
-                <p>© 2025 EVENTIQUE. ALL RIGHTS RESERVED.</p>
-                <a href="#" className="hover:underline">Go Back to Top</a>
-            </div>
-        </footer>
-    );
+      {/* Bottom Bar */}
+      <div className="mt-10 border-t border-white/20 pt-4 pb-4 flex flex-col md:flex-row justify-between items-center text-xs text-white/70">
+        <p>© 2025 EVENTIQUE. All rights reserved.</p>
+        <div className="flex space-x-4 mt-2 md:mt-0 text-lg">
+          <a href="#"><FaGithub /></a>
+          <a href="#"><FaLinkedin /></a>
+          <a href="#"><FaInstagram /></a>
+        </div>
+      </div>
+    </footer>
+  );
 }
