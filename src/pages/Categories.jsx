@@ -48,14 +48,13 @@ export default function Categories() {
   ];
 
   return (
-    <section className="max-w-screen-xl mx-auto px-6 py-16 font-sans">
-      {/* Heading
+    <section className="max-w-screen-xl mx-auto px-6 py-20 font-sans">
+    
       <div className="text-center mb-10">
-        <h2 className="text-xl sm:text-2xl text-blue-600 font-semibold underline underline-offset-4">
+        <h2 className="text-2xl sm:text-2xl text-black font-semibold font-satisfy">
           Event Categories
         </h2>
-        <p className="text-3xl font-bold text-gray-800 mt-2">Our Services</p>
-      </div> */}
+      </div>
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
