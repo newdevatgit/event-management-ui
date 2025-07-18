@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="bg-black text-white pt-16 px-6 md:px-12 font-sans rounded-lg">
 
       {/* Newsletter Box */}
-      <div className="bg-purple-400 rounded-2xl p-8 max-w-5xl mx-auto text-center shadow-lg">
+      <div className="bg-purple-400 rounded-2xl p-8 max-w-[100%] h-fit mx-auto text-center shadow-lg">
         
 
         {/* Email Input */}

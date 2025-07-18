@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function Navbar() {
     return (
-        <nav className="w-full px-2 py-2 flex justify-between items-center bg-white shadow-sm font-poppins">
+        <nav className="w-full px-4 py-4 flex justify-between items-center bg-white shadow-sm font-poppins">
             <div className="text-2xl font-bold text-black">
                 <Link to="/">
                     Eventique.

@@ -15,7 +15,7 @@ export default function Slider() {
   ];
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto">
+    <div className="w-full max-w-full mx-auto">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
