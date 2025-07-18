@@ -1,6 +1,7 @@
 import Slider from "../components/Slider";
 import Categories from "./Categories";
 import Services from "./Services";
+import Contact from "./Contact";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
             {/* <button className="bg-black m-4 p-4 text-white px-4 py-2 rounded-full font-medium hover:bg-gray-900">Get Started</button> */}
         </div>
         <Services />
+        <Contact />
        </> 
     );
 }
