@@ -12,11 +12,11 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white pt-16 px-6 md:px-12 font-sans rounded-lg">
 
-      {/* Newsletter Box */}
+      {/* Newsletter Box
       <div className="bg-purple-400 rounded-2xl p-8 max-w-[100%] h-fit mx-auto text-center shadow-lg">
         
 
-        {/* Email Input */}
+        
         <div className="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto">
           <input
             type="email"
@@ -27,10 +27,10 @@ export default function Footer() {
             Get started
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Footer Links */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-16 text-sm text-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10  text-sm text-white">
         <div>
           <h4 className="font-bold text-left mb-3">Sign up for our newsletter</h4>
           <p className="text-left text-white/70 mb-4">
