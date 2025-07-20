@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import SignIn from './pages/SignIn';
+import EventDetails from './pages/EventDetails';
 
 import './App.css'
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/services" element={<Services/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/sign-in" element={<SignIn/>}/>
+        <Route path="/event/:id" element={<EventDetails/>}/>
       </Routes>
      </Layout>
     </BrowserRouter>
