@@ -3,10 +3,10 @@ import { FaFacebook } from "react-icons/fa";
 
 export default function SignIn() {
     return (
-        <div className="flex flex-col min-h-screen items-center justify-center bg-[url(https://i.pinimg.com/originals/52/07/cf/5207cfb3fd0f613551e4f24b50315378.jpg)] bg-cover bg-center bg-no-repeat">
+        <div className="flex flex-col min-h-screen items-center justify-center bg-gray-100">
             <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl">
                 <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Sign In</h1>
-                
+
                 <form className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Email</label>
@@ -44,7 +44,7 @@ export default function SignIn() {
 
                 </div>
                 <p className="mt-6 text-center text-sm text-gray-500">Dont have an account</p>
-                <a href="/signup" className="text-blue-600 hover:underline">Sign up</a>
+                <a href="/sign-up" className="text-blue-600 hover:underline">Sign up</a>
             </div>
 
         </div>
