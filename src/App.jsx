@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import SignIn from './pages/SignIn';
 import EventDetails from './pages/EventDetails';
+import SignUp from './pages/SignUp';
 
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/services" element={<Services/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/sign-in" element={<SignIn/>}/>
+        <Route path="/sign-up" element={<SignUp/>}/>
         <Route path="/event/:id" element={<EventDetails/>}/>
       </Routes>
      </Layout>
