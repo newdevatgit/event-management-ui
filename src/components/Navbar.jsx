@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 export default function Navbar() {
     return (
-        <nav className="w-full px-4 py-4 flex justify-between items-center bg-white shadow-sm font-poppins">
-            <div className="text-2xl font-bold text-black">
+        <nav className="w-full px-4 py-2y flex justify-between items-center bg-white shadow-sm font-poppins">
+            <div>
                 <Link to="/">
-                    Eventique.
+                    <img
+                        src="src/assets/logo.jpg"
+                        alt="Eventique"
+                        className="h-[60px] w-auto object-fill"
+                    />
                 </Link>
             </div>
+
             <ul className="hidden md:flex space-x-8 text-md font-medium text-black">
                 <li><Link to="/" className="hover:text-purple-500">Home</Link></li>
                 <li><Link to="/categories" className="hover:text-purple-500">Categories</Link></li>
@@ -22,6 +27,6 @@ export default function Navbar() {
                 </Link>
             </div>
         </nav>
-        
+
     );
 }
