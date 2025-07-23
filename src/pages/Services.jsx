@@ -1,7 +1,16 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import servicesData from "public/servicesData.json";
 
 export default function Services() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch("/servicesData.json")
+      .then((res) => res.json())
+      .then((data) => setServices(data))
+      .catch((err) => console.error("Failed to load services data:", err));
+  }, []);
+
   return (
     <section className="max-w-screen-xl mx-auto px-6 py-20 font-sans">
       <div className="text-center mb-10">
@@ -11,7 +20,7 @@ export default function Services() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {servicesData.map((service) => (
+        {services.map((service) => (
           <div
             key={service.id}
             className="bg-white border p-2 rounded-xl shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group"

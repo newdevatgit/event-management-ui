@@ -1,9 +1,19 @@
 import { useParams } from "react-router-dom";
-import servicesData from "public/servicesData.json";
+import { useEffect, useState } from "react";
 
 export default function EventDetails() {
   const { id } = useParams();
-  const event = servicesData.find((item) => item.id === Number(id));
+  const [event, setEvent] = useState(null);
+
+  useEffect(() => {
+    fetch("/servicesData.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const matchedEvent = data.find((item) => item.id === Number(id));
+        setEvent(matchedEvent);
+      })
+      .catch((err) => console.error("Error loading event data:", err));
+  }, [id]);
 
   if (!event) {
     return (
