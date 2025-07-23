@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function Navbar() {
     return (
-        <nav className="w-full px-4 py-2y flex justify-between items-center bg-white shadow-sm font-poppins">
+        <nav className="w-full px-4 py-3y flex justify-between items-center bg-white shadow-sm font-poppins">
             <div>
                 <Link to="/">
                     <img
