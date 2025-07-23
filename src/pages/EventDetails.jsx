@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import servicesData from "../data/servicesData.json"; // adjust path if needed
+import servicesData from "public/servicesData.json";
 
 export default function EventDetails() {
   const { id } = useParams();
