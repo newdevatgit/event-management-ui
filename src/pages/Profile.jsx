@@ -24,7 +24,7 @@ export default function Profile() {
       <div className="space-y-3 text-gray-700">
         <p><strong>Name:</strong> {user.displayName || "N/A"}</p>
         <p><strong>Email:</strong> {user.email}</p>
-        <p><strong>UID:</strong> {user.uid}</p>
+        {/* <p><strong>UID:</strong> {user.uid}</p> */}
       </div>
     </div>
   );
