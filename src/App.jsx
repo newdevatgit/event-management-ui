@@ -8,6 +8,8 @@ import Services from './pages/Services';
 import SignIn from './pages/SignIn';
 import EventDetails from './pages/EventDetails';
 import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
+import Cart from './pages/Cart';
 
 import './App.css'
 
@@ -24,6 +26,9 @@ function App() {
         <Route path="/sign-in" element={<SignIn/>}/>
         <Route path="/sign-up" element={<SignUp/>}/>
         <Route path="/event/:id" element={<EventDetails/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        {/* Add more routes as needed */}
       </Routes>
      </Layout>
     </BrowserRouter>
