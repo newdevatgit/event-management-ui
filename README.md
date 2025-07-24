@@ -45,6 +45,8 @@ event-management-ui/
 │   ├── assets/
 │   ├── components/
 │   ├── pages/
+│   ├── context/
+│   ├── routes
 │   ├── App.jsx
 │   └── main.jsx
 ├── index.html
@@ -78,7 +80,14 @@ npm run dev
 
 ## 📸 Screenshots
 
+### 🔹 Home page
+![Home page](src/assets/Home_page_before_login.png)
 
+### 🔹 Home page Logged In
+![Home page](src/assets/Home_page_after_login.png)
+
+### 🔹 Services
+![services](src/assets/services_page.png)
 
 --
 
