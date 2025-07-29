@@ -1,65 +1,157 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { auth } from "../firebase"; // Adjust path if needed
+import { toast } from "react-hot-toast";
+
 export default function SignUp() {
-    return (
-        <div className="flex flex-col min-h-screen items-center justify-center bg-gray-100 overflow-auto">
-            <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl">
-                <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Create an Account</h1>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-                <form className="space-y-4" >
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700" >Your Name</label>
-                        <input type="name" placeholder="Your Name" className="mt-1 block w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-                    </div>
+  const navigate = useNavigate();
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Your email</label>
-                        <input type="email" placeholder="youremail@email.com" className="mt-1 block w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-                    </div>
+  // Handle input field changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" placeholder="********" className="mt-1 block w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-                    </div>
+  // Handle form submission (Email/Password sign-up)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      await updateProfile(userCredential.user, {
+        displayName: formData.name,
+      });
+      toast.success("Account created successfully!");
+      navigate("/"); // Redirect to home or profile
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
-                    >
-                        Sign Up
-                    </button>
+  // Google sign-in logic
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      toast.success("Signed in with Google");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
+  return (
+    <div className="flex flex-col min-h-screen items-center justify-center bg-gray-100 overflow-auto">
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl">
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+          Create an Account
+        </h1>
 
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Your Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              required
+              className="mt-1 block w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-                </form>
-                <div className="flex flex-col gap-4 my-4">
-                    <button
-                        type="button"
-                        className="w-full flex items-center justify-center gap-3 border border-gray-300 hover:border-gray-500 text-black p-3 rounded-lg transition shadow-sm hover:shadow-md font-medium"
-                    >
-                        <FcGoogle className="text-xl block " />
-                        Sign in with Google
-                    </button>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Your Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="youremail@email.com"
+              required
+              className="mt-1 block w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-                    <button
-                        type="button"
-                        className="w-full flex items-center justify-center gap-3 border border-gray-300 hover:border-gray-500 text-black p-3 rounded-lg transition shadow-sm hover:shadow-md font-medium"
-                    >
-                        <FaFacebook className="text-xl text-blue-600" />
-                        Sign in with Facebook
-                    </button>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="********"
+              required
+              className="mt-1 block w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-                </div>
-                <p className="text-sm font-light text-gray-500 text-center">
-                    Already have an account?
-                    <Link to='/Sign-in'>
-                        <span className="font-medium inline text-[#3b82f6] hover:underline md:text-base">
-                            Log in
-                        </span>
-                    </Link>
-                </p>
-            </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        {/* Google Sign In */}
+        <div className="flex flex-col gap-4 my-4">
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 hover:border-gray-500 text-black p-3 rounded-lg transition shadow-sm hover:shadow-md font-medium"
+          >
+            <FcGoogle className="text-xl block " />
+            Sign in with Google
+          </button>
+
+          <button
+            type="button"
+            disabled
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 text-gray-400 p-3 rounded-lg cursor-not-allowed"
+          >
+            <FaFacebook className="text-xl text-gray-400" />
+            Facebook Sign-in (Coming Soon)
+          </button>
         </div>
-    );
+
+        {/* Link to Login */}
+        <p className="text-sm font-light text-gray-500 text-center">
+          Already have an account?
+          <Link to="/sign-in">
+            <span className="font-medium inline text-[#3b82f6] hover:underline ml-1">
+              Log in
+            </span>
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
 }
