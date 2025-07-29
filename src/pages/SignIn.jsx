@@ -49,7 +49,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-gray-100">
+    <div className="flex flex-col min-h-screen items-center justify-center bg-blue-800">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Sign In</h1>
 
@@ -81,6 +81,15 @@ export default function SignIn() {
             />
           </div>
 
+          {/* Remember Me + Forgot */}
+          <div className="flex items-center justify-between text-sm text-gray-500">
+            <label className="flex items-center">
+              <input type="checkbox" className="mr-2" />
+              Remember me
+            </label>
+            <a href="#" className="text-blue-600 hover:underline">Forgot Password?</a>
+          </div>
+
           <button
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
@@ -88,6 +97,13 @@ export default function SignIn() {
             Sign In
           </button>
         </form>
+
+        <div className="flex items-center my-4">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="mx-4 text-gray-500 font-medium">OR</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+
 
         {/* OAuth Buttons */}
         <div className="flex flex-col gap-4 my-4">
@@ -100,14 +116,14 @@ export default function SignIn() {
             Sign in with Google
           </button>
 
-          <button
+          {/* <button
             type="button"
             disabled
             className="w-full flex items-center justify-center gap-3 border border-gray-300 text-gray-400 p-3 rounded-lg cursor-not-allowed"
           >
             <FaFacebook className="text-xl text-gray-400" />
             Facebook Sign-in (Coming Soon)
-          </button>
+          </button> */}
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-500">
