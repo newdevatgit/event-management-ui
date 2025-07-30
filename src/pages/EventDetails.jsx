@@ -93,7 +93,7 @@ export default function EventDetails() {
           <button
             onClick={handleAddToCart}
             disabled={adding}
-            className="mt-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium px-6 py-3 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="mt-6 bg-gradient-to-r from-green-600 to-green-700 text-white font-medium px-6 py-3 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {adding ? "Adding..." : "Add to Cart"}
           </button>

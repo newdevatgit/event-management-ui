@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { db } from '../firebase'; // ✅ Make sure this path is correct
 import { collection, addDoc } from 'firebase/firestore';
 import { toast } from 'react-hot-toast';
+import { FaLocationDot } from 'react-icons/fa6';
+import { FaPhone } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { IoMdChatbubbles } from 'react-icons/io';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -61,7 +65,7 @@ export default function Contact() {
               {/* Email Card */}
               <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg py-10 px-2">
                 <span className="inline-block p-3 text-black rounded-full bg-gray-200">
-                  📧
+                  <MdEmail/>
                 </span>
                 <h2 className="mt-4 text-base font-medium text-gray-800">Email</h2>
                 <p className="mt-2 text-sm text-gray-500">Our friendly team is here to help.</p>
@@ -70,7 +74,7 @@ export default function Contact() {
 
               {/* Location Card */}
               <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg py-10 px-2">
-                <span className="inline-block p-3 text-black rounded-full bg-gray-200">📍</span>
+                <span className="inline-block p-3 text-black rounded-full bg-gray-200"><FaLocationDot/></span>
                 <h2 className="mt-4 text-base font-medium text-gray-800">Office</h2>
                 <p className="mt-2 text-sm text-gray-500">Come say hello at our office HQ.</p>
                 <p className="mt-2 text-sm text-blue-500">MITM Ujjain (M.P), India</p>
@@ -78,7 +82,7 @@ export default function Contact() {
 
               {/* Chat Card */}
               <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg py-10 px-2">
-                <span className="inline-block p-3 text-black rounded-full bg-gray-200">💬</span>
+                <span className="inline-block p-3 text-black rounded-full bg-gray-200"><IoMdChatbubbles /></span>
                 <h2 className="mt-4 text-base font-medium text-gray-800">Live Chat</h2>
                 <p className="mt-2 text-sm text-gray-500">Our friendly team is here to help.</p>
                 <p className="mt-2 text-sm text-blue-500">Start new chat</p>
@@ -86,7 +90,7 @@ export default function Contact() {
 
               {/* Phone Card */}
               <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg py-10 px-2">
-                <span className="inline-block p-3 text-black rounded-full bg-gray-200">📞</span>
+                <span className="inline-block p-3 text-black rounded-full bg-gray-200"><FaPhone /></span>
                 <h2 className="mt-4 text-base font-medium text-gray-800">Phone</h2>
                 <p className="mt-2 text-sm text-gray-500">Mon–Fri from 8am to 5pm.</p>
                 <p className="mt-2 text-sm text-blue-500">+91 1234567890</p>
