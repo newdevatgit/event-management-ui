@@ -27,7 +27,7 @@ export default function Navbar() {
       <div>
         <Link to="/">
           <img
-            src="public/logo.jpg"
+            src="public/logo.png"
             alt="Eventique"
             className="h-[60px] w-auto object-fill"
           />
