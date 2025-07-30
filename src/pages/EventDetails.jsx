@@ -63,28 +63,37 @@ export default function EventDetails() {
   }
 
   return (
-    <div className="max-w-screen-lg mx-auto p-6">
-      <div className="flex flex-col md:flex-row gap-8">
+    <div className="max-w-6xl mx-auto px-6 py-12 font-poppins">
+      <div className="flex flex-col md:flex-row gap-10 items-center bg-white shadow-xl rounded-2xl overflow-hidden transition-transform hover:scale-[1.01]">
+        {/* Image */}
         <img
           src={event.image}
           alt={event.title}
-          className="w-full md:w-1/2 h-auto rounded-xl shadow-lg"
+          className="w-full md:w-[45%] h-[300px] object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
         />
-        <div className="md:w-1/2 space-y-4">
-          <h2 className="text-2xl font-bold text-gray-800">{event.title}</h2>
-          <p className="text-gray-600">{event.description}</p>
-          <p className="text-sm text-gray-500">
-            <strong>Location:</strong> {event.location}
+
+        {/* Event Content */}
+        <div className="w-full md:w-[55%] p-6 space-y-4">
+          <h2 className="text-3xl font-bold text-gray-800">{event.title}</h2>
+          <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
+
+          <div className="grid grid-cols-2 gap-4 mt-4 text-sm text-gray-500">
+            <p>
+              <span className="font-semibold text-gray-700">📍 Location:</span> {event.location}
+            </p>
+            <p>
+              <span className="font-semibold text-gray-700">⏳ Duration:</span> {event.duration}
+            </p>
+          </div>
+
+          <p className="text-xl font-semibold text-blue-600 mt-4">
+            ₹{event.cost}
           </p>
-          <p className="text-sm text-gray-500">
-            <strong>Duration:</strong> {event.duration}
-          </p>
-          <p className="text-xl font-semibold text-black">{event.cost}</p>
 
           <button
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg disabled:opacity-60"
             onClick={handleAddToCart}
             disabled={adding}
+            className="mt-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium px-6 py-3 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {adding ? "Adding..." : "Add to Cart"}
           </button>
@@ -92,4 +101,5 @@ export default function EventDetails() {
       </div>
     </div>
   );
+
 }
