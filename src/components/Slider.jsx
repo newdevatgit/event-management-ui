@@ -28,15 +28,19 @@ export default function Slider() {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="rounded-xl overflow-hidden shadow-lg"
+        className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] transition-all duration-500"
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
-            <img
-              src={src}
-              alt={`Event ${index}`}
-              className="w-full h-[500px] object-cover"
-            />
+            <div className="relative group">
+              <img
+                src={src}
+                alt={`Event ${index}`}
+                className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
+              />
+              {/* Gradient overlay for style */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

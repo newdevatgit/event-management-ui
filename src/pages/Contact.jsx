@@ -1,6 +1,6 @@
-// src/pages/Contact.jsx
+
 import React, { useState } from 'react';
-import { db } from '../firebase'; // ✅ Make sure this path is correct
+import { db } from '../firebase'; 
 import { collection, addDoc } from 'firebase/firestore';
 import { toast } from 'react-hot-toast';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -32,6 +32,7 @@ export default function Contact() {
         timestamp: new Date()
       });
       toast.success('Message sent successfully!');
+      alert('Message sent successfully!');
       setFormData({
         firstName: '',
         lastName: '',
