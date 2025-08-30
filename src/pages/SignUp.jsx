@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import {
     createUserWithEmailAndPassword,
     updateProfile,
     signInWithPopup,
     GoogleAuthProvider,
 } from "firebase/auth";
-import { auth } from "../firebase"; // Adjust path if needed
+import { auth } from "../firebase";
 import { toast } from "react-hot-toast";
 
 export default function SignUp() {
@@ -138,15 +137,6 @@ export default function SignUp() {
                         <FcGoogle className="text-xl block " />
                         Sign in with Google
                     </button>
-
-                    {/* <button
-            type="button"
-            disabled
-            className="w-full flex items-center justify-center gap-3 border border-gray-300 text-gray-400 p-3 rounded-lg cursor-not-allowed"
-          >
-            <FaFacebook className="text-xl text-gray-400" />
-            Facebook Sign-in (Coming Soon)
-          </button> */}
                 </div>
 
                 {/* Link to Login */}

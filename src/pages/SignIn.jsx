@@ -22,7 +22,7 @@ export default function SignIn() {
     }));
   };
 
-  // 🔐 Email/Password Sign-in
+  // Email/Password Sign-in
   const handleEmailSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -35,7 +35,7 @@ export default function SignIn() {
     }
   };
 
-  // 🔐 Google Sign-in
+  // Google Sign-in
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -53,7 +53,7 @@ export default function SignIn() {
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Sign In</h1>
 
-        {/* 🔐 Email/Password Sign-in Form */}
+        {/* Email/Password Sign-in Form */}
         <form className="space-y-4" onSubmit={handleEmailSignIn}>
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
@@ -115,15 +115,6 @@ export default function SignIn() {
             <FcGoogle className="text-xl" />
             Sign in with Google
           </button>
-
-          {/* <button
-            type="button"
-            disabled
-            className="w-full flex items-center justify-center gap-3 border border-gray-300 text-gray-400 p-3 rounded-lg cursor-not-allowed"
-          >
-            <FaFacebook className="text-xl text-gray-400" />
-            Facebook Sign-in (Coming Soon)
-          </button> */}
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-500">
