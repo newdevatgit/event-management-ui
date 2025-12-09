@@ -1,51 +1,47 @@
-import { auth } from "../firebase"; 
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Navbar() {
-  const [user, setUser] = useState(null);
+  const { user, logout, isAuthenticated } = useAuth(); 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isMenuOpen) {
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe(); 
-  }, []);
-
-
-  const handleLogout = async () => {
-    await signOut(auth);
-    navigate("/sign-in");
-    setIsMenuOpen(false);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/sign-in");
+    closeMenu();
   };
 
   return (
     <nav className="w-full px-4 py-3 flex justify-between items-center bg-white shadow-sm font-poppins relative z-50">
-      <div>
-        <Link to="/">
+       {/* Logo y Nombre */}
+      <div className="flex items-center">
+        <Link to="/" onClick={closeMenu} className="flex items-center">
           <img
-            src="https://github.com/newdevatgit/event-management-ui/blob/main/public/logo.png?raw=true"
-            alt="Eventique"
+            src="/icono.png"
+            alt="Eventyfy"
             className="h-[60px] w-auto object-fill"
           />
+          <span className="ml-2 text-2xl font-bold text-gray-800">Eventyfy</span>
         </Link>
       </div>
 
+      {/* Botón del menú móvil */}
       <button 
         onClick={toggleMenu} 
         className="md:hidden z-50 relative"
@@ -64,30 +60,36 @@ export default function Navbar() {
         </svg>
       </button>
 
-      {/* Full screen overlay menu */}
+      {/* Menú móvil (full screen overlay) */}
       <div className={`${
         isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
       } md:hidden fixed inset-0 bg-black bg-opacity-95 transition-all duration-300 ease-in-out z-40`}>
         <div className="flex flex-col items-center justify-center h-full">
           <ul className="flex flex-col items-center space-y-8 text-2xl text-white mb-12">
-            <li><Link onClick={toggleMenu} to="/" className="hover:text-purple-500 transition-colors">Home</Link></li>
-            <li><Link onClick={toggleMenu} to="/categories" className="hover:text-purple-500 transition-colors">Categories</Link></li>
-            <li><Link onClick={toggleMenu} to="/services" className="hover:text-purple-500 transition-colors">Services</Link></li>
-            <li><Link onClick={toggleMenu} to="/contact" className="hover:text-purple-500 transition-colors">Contact</Link></li>
+            <li><Link onClick={closeMenu} to="/" className="hover:text-purple-500 transition-colors">Home</Link></li>
+            <li><Link onClick={closeMenu} to="/categories" className="hover:text-purple-500 transition-colors">Categories</Link></li>
+           <li>
+                <a href="#establishments" onClick={closeMenu} className="hover:text-purple-500 transition-colors">
+                  Establishments
+                </a>
+              </li>
+            <li><Link onClick={closeMenu} to="/services" className="hover:text-purple-500 transition-colors">Services</Link></li>
+            <li><Link onClick={closeMenu} to="/contact" className="hover:text-purple-500 transition-colors">Contact</Link></li>
           </ul>
 
           <div className="flex flex-col items-center space-y-4 w-64">
-            {!user ? (
+            {!isAuthenticated ? (
               <>
                 <Link
-                  onClick={toggleMenu}
+                  onClick={closeMenu}
                   to="/sign-in"
                   className="w-full border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors text-center"
                 >
                   Log in
                 </Link>
                 <Link
-                  onClick={toggleMenu}
+
+                  onClick={closeMenu}
                   to="/sign-up"
                   className="w-full bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition-colors text-center"
                 >
@@ -97,19 +99,30 @@ export default function Navbar() {
             ) : (
               <>
                 <Link
-                  onClick={toggleMenu}
-                  to="/cart"
+                  onClick={closeMenu}
+                  to="/reserve"
                   className="w-full border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors text-center"
                 >
-                  My Cart
+                  Reservar
                 </Link>
-                <Link
-                  onClick={toggleMenu}
-                  to="/profile"
-                  className="w-full border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors text-center"
-                >
-                  Profile
-                </Link>
+                {user?.type === "ADMIN" ? (
+                  <Link
+                    onClick={closeMenu}
+                    to="/admin/dashboard"
+                    className="w-full border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors text-center"
+                  >
+                    Dashboard
+                  </Link>
+                ) : (
+                  <Link
+                    onClick={closeMenu}
+                    to="/profile"
+                    className="w-full border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors text-center"
+                  >
+                    {user?.fullName || "Profile"}
+                  </Link>
+                  
+                )}
                 <button
                   onClick={handleLogout}
                   className="w-full bg-red-500 text-white px-6 py-3 rounded-full font-medium hover:bg-red-600 transition-colors"
@@ -122,16 +135,18 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Desktop menu */}
+      {/* Menú desktop */}
       <ul className="hidden md:flex space-x-8 text-md font-medium text-black">
         <li><Link to="/" className="hover:text-purple-500">Home</Link></li>
         <li><Link to="/categories" className="hover:text-purple-500">Categories</Link></li>
+        <li><Link to="/establishments" className="hover:text-purple-500">Establishments</Link></li>
         <li><Link to="/services" className="hover:text-purple-500">Services</Link></li>
         <li><Link to="/contact" className="hover:text-purple-500">Contact</Link></li>
       </ul>
 
+      {/* Botones desktop */}
       <div className="hidden md:flex space-x-3">
-        {!user ? (
+        {!isAuthenticated ? (
           <>
             <Link
               to="/sign-in"
@@ -148,18 +163,29 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <Link
-              to="/cart"
-              className="text-black border border-gray-300 px-4 py-2 rounded-full font-medium hover:bg-gray-100"
-            >
-              My Cart
-            </Link>
-            <Link
-              to="/profile"
-              className="text-black border border-gray-300 px-4 py-2 rounded-full font-medium hover:bg-gray-100"
-            >
-              Profile
-            </Link>
+            <span className="text-gray-700 flex items-center px-3">
+              👋 Hola, {user?.fullName || user?.email || "Usuario"}
+            </span>
+             {user?.type !== "ADMIN" && (
+              <Link to="/reserve" className="text-black border border-gray-300 px-4 py-2 rounded-full font-medium hover:bg-gray-100">
+                🛒 Reservar
+              </Link>
+            )}
+            {user?.type === "ADMIN" ? (
+              <Link
+                to="/admin/dashboard"
+                className="text-black border border-gray-300 px-4 py-2 rounded-full font-medium hover:bg-gray-100"
+              >
+                🛠️ Dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/profile"
+                className="text-black border border-gray-300 px-4 py-2 rounded-full font-medium hover:bg-gray-100"
+              >
+                👤 Profile
+              </Link>
+            )}
             <button
               onClick={handleLogout}
               className="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600"
